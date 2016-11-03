@@ -1,3 +1,6 @@
+# Exercise 12-3
+
+
 # Install Plotly 
 
 
@@ -5,30 +8,45 @@
 # create a variable and pass in the plot_ly function that takes in 
 # the data midwest, sets the x to ~percollege, the color to ~state 
 # and the type to "box" 
+plot_ly(midwest, x = ~percollege, color = ~state, type = "box")
 
 
 # Make two vectors of numbers between 1 and 10, with each vector having 10 numbers in it
+x <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+y <- c(10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
 
 
-# create a data frame of the two vectors 
+# create a data frame of the two vectors
+plot.data <- data.frame(x, y)
 
 
 # now create a basic scatterplot using the data frame you just created, passing it into 
 # a variable
+scatterplot <- plot_ly(data = plot.data, x = x, y = y)
 
 
 # Call your variable and enjoy your awesome plot! 
-
+scatterplot
 
 # Now create a new variable styled.scatterplot. Using the same data and scatterplot
 # as from earlier, but you are going to change the markers.  Make it so the 
-# markers are size 10, of a color of your choice.  Finally change the boarder,
-# of the markers to a differnet color with a widthe of 2
+# markers are size 10, of a color of your choice.  Finally change the border,
+# of the markers to a differnet color with a width of 2
+styled.scatterplot <- plot_ly(data = plot.data, x = x, y = y,
+                              markers = list(size = 10,
+                                             color = 'red',
+                                             line = list(color = 'blue',
+                                                         width = 2)))
+  
 
 
 # Call the style.scatterplot variable and see what has changed. Finally add
 # add a pipe operator and use the layout function to add a title and set the
 # x and y axis to have zeroline = FALSE 
+  
+  layout(title = 'Styled_Scatter',
+         yaxis = list(zeroline = FALSE),
+         xaxis = list(zeroline = FALSE))  
 
 # load in the data set diamonds 
 
